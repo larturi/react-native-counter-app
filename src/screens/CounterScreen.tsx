@@ -1,18 +1,15 @@
-/* eslint-disable react-native/no-inline-styles */
-
 import React, { useState } from 'react';
-import { View, Text, TouchableOpacity, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet } from 'react-native';
+import { Fab } from '../components/Fab';
 
 export const CounterScreen = () => {
   const [contador, setContador] = useState(10);
   return (
     <View style={styles.container}>
       <Text style={styles.title}>Contador: {contador}</Text>
-      <TouchableOpacity onPress={() => setContador(contador + 1)}>
-        <View style={styles.boton}>
-          <Text>+1</Text>
-        </View>
-      </TouchableOpacity>
+
+      <Fab title="-1" position="bl" onPress={() => setContador(contador - 1)} />
+      <Fab title="+1" position="br" onPress={() => setContador(contador + 1)} />
     </View>
   );
 };
@@ -27,10 +24,5 @@ const styles = StyleSheet.create({
     fontSize: 35,
     textAlign: 'center',
     top: -10,
-  },
-
-  boton: {
-    backgroundColor: 'red',
-    borderRadius: 100,
   },
 });
